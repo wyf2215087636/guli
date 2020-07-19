@@ -78,12 +78,14 @@ public class CategoryController {
 
     /**
      * 删除
+     * @RequestBody 只有post请求才有请求体，  发送的json 转为对应的对象
      */
     @RequestMapping("/delete")
     // @RequiresPermissions("product:category:delete")
     public R delete(@RequestBody Long[] catIds){
-		categoryService.removeByIds(Arrays.asList(catIds));
+		// categoryService.removeByIds(Arrays.asList(catIds));
 
+		categoryService.removeMenuByids(Arrays.asList(catIds));
         return R.ok();
     }
 
